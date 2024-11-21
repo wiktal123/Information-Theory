@@ -13,7 +13,7 @@ def compute_conditional_entropy(text, rank):
         return compute_entropy(text)
 
     # Create n-grams and prefixes
-    ngrams = [tuple(text[i:i + rank]) for i in range(len(text) - rank + 1)]
+    ngrams = [tuple(text[i:i + rank+1]) for i in range(len(text) - rank + 1)]
     prefixes = [ngram[:-1] for ngram in ngrams]
 
     ngram_count = Counter(ngrams)
@@ -68,7 +68,7 @@ with open('LAB4/output.txt', 'w', encoding='utf-8') as output_file:
     output_file.write("\n") 
     print_entropies(english_word_entropies, "English Word-Level", rank, output_file)
 
-    output_file
+    output_file.write("\n")
     print_entropies(latin_char_entropies, "Latin Character-Level", rank, output_file)
     output_file.write("\n")
     print_entropies(latin_word_entropies, "Latin Word-Level", rank, output_file)
